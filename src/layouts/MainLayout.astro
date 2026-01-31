@@ -1,5 +1,7 @@
 ---
-const title = '5th Edition Barcelona Tango Marathon 2026';
+import Navbar from '../components/Navbar.astro';
+
+const { title } = Astro.props;
 ---
 
 <html lang="en">
@@ -9,9 +11,10 @@ const title = '5th Edition Barcelona Tango Marathon 2026';
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title></title>
+    <title>{title}</title>
   </head>
   <body>
+    <Navbar />
     <slot />
   </body>
 </html>
