@@ -3,13 +3,12 @@ import '../styles/global.css';
 const { class: className = '' } = Astro.props;
 ---
 
-<div class="flex flex-col items-between"></div>
-
-<div class=`p-2 border-2 rounded-xl border-amber-200 ${className}`>
+<div class={`p-2 border-2 rounded-xl border-amber-200 ${className}`}>
   <button
     id="burger"
     aria-expanded="false"
     aria-controls="main-menu"
+    aria-label="open mobile menu"
     class="w-8 h-8 flex flex-col items-center justify-center text-amber-200 relative z-20"
   >
     <span
@@ -24,13 +23,68 @@ const { class: className = '' } = Astro.props;
   </button>
 </div>
 
+<div
+  id="float-menu"
+  class="text-amber-200 bg-black flex flex-col p-5 text-xl fixed top-0 left-0 w-full h-full items-center justify-center opacity-0 pointer-events-none scale-95 transition-all duration-300 z-40"
+>
+  <a href="/">Home</a>
+  <a href="/highlights">Highlights</a>
+  <a href="/venue">Venue</a>
+  <a href="/programme">Programme</a>
+  <a href="/pasteditions">Past Editions</a>
+  <a href="/registration">Registration</a>
+</div>
+
 <script type="module">
-  const burger = document.getElementById('burger');
-  let open = false;
-  burger.addEventListener('click', () => {
-    open = !open;
-    burger.classList.toggle('open', open);
-    burger.setAttribute('aria-expanded', open);
+  document.addEventListener('click', (e) => {
+    const burger = document.getElementById('burger');
+    const floatMenuElement = document.getElementById('float-menu');
+    if (!burger || !floatMenuElement) return;
+
+    // Burger click
+    if (e.target === burger || burger.contains(e.target)) {
+      let open = burger.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open);
+      if (open) {
+        floatMenuElement.classList.remove(
+          'opacity-0',
+          'pointer-events-none',
+          'scale-95',
+        );
+        floatMenuElement.classList.add(
+          'opacity-100',
+          'pointer-events-auto',
+          'scale-100',
+        );
+      } else {
+        floatMenuElement.classList.remove(
+          'opacity-100',
+          'pointer-events-auto',
+          'scale-100',
+        );
+        floatMenuElement.classList.add(
+          'opacity-0',
+          'pointer-events-none',
+          'scale-95',
+        );
+      }
+    }
+
+    // Cerrar menú al hacer click en un enlace
+    if (floatMenuElement.contains(e.target) && e.target.tagName === 'A') {
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', false);
+      floatMenuElement.classList.remove(
+        'opacity-100',
+        'pointer-events-auto',
+        'scale-100',
+      );
+      floatMenuElement.classList.add(
+        'opacity-0',
+        'pointer-events-none',
+        'scale-95',
+      );
+    }
   });
 </script>
 
