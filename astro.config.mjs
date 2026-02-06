@@ -9,7 +9,7 @@ export default defineConfig({
   image: {
     service: {
       entrypoint: 'astro/assets/services/sharp',
-      config: { mode: 'compile' }
-    }
-  }
+      config: { mode: 'compile' },
+    },
+  },
 });
