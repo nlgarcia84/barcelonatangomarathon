@@ -5,7 +5,7 @@ import cloudflare from '@astrojs/cloudflare';
 export default defineConfig({
   integrations: [tailwind()],
   adapter: cloudflare(),
-  output: 'hybrid',
+  output: 'server',
   image: {
     service: {
       entrypoint: 'astro/assets/services/default',
