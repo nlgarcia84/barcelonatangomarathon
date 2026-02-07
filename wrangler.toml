@@ -1,4 +1,0 @@
-name = "barcelonatangomarathon"
-main = "dist/_worker.js/index.js"
-compatibility_date = "2026-02-06"
-compatibility_flags = ["nodejs_compat"]
