@@ -14,10 +14,12 @@ const { image, title, description } = Astro.props;
   <img class="w-full object-cover" src={image} alt="Card image" />
 
   <div class="px-6 py-4">
-    <div class="font-bold text-xl mb-2 text-gray-900 dark:text-white">
+    <div
+      class="font-inder font-bold text-xl mb-2 text-gray-900 dark:text-white"
+    >
       {title}
     </div>
-    <p class="text-gray-700 dark:text-gray-300 text-base">
+    <p class="font-inder text-gray-700 dark:text-gray-300 text-base">
       {description}
     </p>
   </div>
