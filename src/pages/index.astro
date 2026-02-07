@@ -13,6 +13,11 @@ const cards = [
     title: 'Card 2',
     description: 'Esta es la segunda card.',
   },
+  {
+    image: '/images/olgalacachila.webp',
+    title: 'Card 3',
+    description: 'Esta es la segunda card.',
+  },
 ];
 ---
 
@@ -64,7 +69,9 @@ const cards = [
     }
   </script>
 
-  <h2 class="text-xl text-amber-300 mb-2">SPINING YOUR TANGO DREAMS</h2>
+  <h2 class="text-xl text-amber-300 mb-2 font-bold">
+    SPINING YOUR TANGO DREAMS
+  </h2>
   <h3 class="mb-10">Scroll Right or Left to see all the DJs</h3>
 
   <div class="relative max-w-6xl mx-auto">
@@ -97,4 +104,33 @@ const cards = [
       →
     </button>
   </div>
+
+  <script>
+    const track = document.getElementById('track') as HTMLElement;
+    const prev = document.getElementById('prev') as HTMLElement;
+    const next = document.getElementById('next') as HTMLElement;
+
+    if (track && prev && next) {
+      let index = 0;
+      const total = track.children.length;
+
+      const update = () => {
+        const firstChild = track.children[0] as HTMLElement;
+        const width = firstChild.offsetWidth;
+        track.style.transform = `translateX(-${index * width}px)`;
+      };
+
+      next.addEventListener('click', () => {
+        if (index < total - 1) index++;
+        update();
+      });
+
+      prev.addEventListener('click', () => {
+        if (index > 0) index--;
+        update();
+      });
+
+      window.addEventListener('resize', update);
+    }
+  </script>
 </MainLayout>
