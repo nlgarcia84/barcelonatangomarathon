@@ -1,0 +1,21 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  day: string;
+  activity: string;
+  time: string;
+  dj: string;
+  venue: string;
+}
+
+const { day, activity, time, dj, venue } = Astro.props;
+---
+
+<div class="bg-black p-5 rounded-xl">
+  <div class="font-bold">{day}</div>
+  <div>{activity}</div>
+  <div>{time}</div>
+  <div>{dj}</div>
+  <div>{venue}</div>
+</div>

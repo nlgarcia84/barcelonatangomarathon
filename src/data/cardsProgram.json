@@ -1,0 +1,23 @@
+[
+  {
+    "day": "Thursday April 2",
+    "activity": "Pre-party Milonga (10 € not included)",
+    "time": "21:00 to 1:00",
+    "dj": "TDJ Addison Yang",
+    "venue": "Venue Casa Valencia"
+  },
+  {
+    "day": "Friday, April 3",
+    "activity": "Afternoon Milonga",
+    "time": "17:00 to 19:00",
+    "dj": "TDJ Sil Cisnero",
+    "venue": "Venue : L'umbracle de les Glories"
+  },
+  {
+    "day": "Saturday April 4",
+    "activity": "Afternoon Milonga",
+    "time": "14:00 to 19:00",
+    "dj": "TDJ Pablo Rodriguez",
+    "venue": "Venue (Nau del Clot)"
+  }
+]

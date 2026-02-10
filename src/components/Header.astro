@@ -4,10 +4,27 @@ import Navigation from './Navigation.astro';
 // Ensure Menu.astro exists in the same directory, or update the path if necessary
 ---
 
-<header class="bg-black flex justify-between px-10 py-7 items-center">
+<header
+  id="main-header"
+  class="fixed top-0 left-0 right-0 z-50 bg-black flex justify-between px-10 py-7 items-center transition-all duration-300"
+>
   <img class="w-20 h-auto max-w-none" src="/images/btmlogo.webp" />
   <nav>
     <Navigation class="hidden lg:block" />
   </nav>
   <Menu class="lg:hidden" />
 </header>
+
+<script>
+  const header = document.getElementById('main-header');
+  const scrollThreshold = 100; // Posición en píxeles donde cambia el estilo
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > scrollThreshold) {
+      // Estilos cuando se hace scroll
+      header?.classList.add('bg-opacity-50', 'shadow-lg', 'py-4');
+    } else {
+      header?.classList.remove('bg-opacity-50', 'shadow-lg', 'py-4');
+    }
+  });
+</script>

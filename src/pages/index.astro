@@ -2,12 +2,14 @@
 import Card from '../components/Card.astro';
 import MainLayout from '../layouts/MainLayout.astro';
 import cards from '../data/cards.json';
+import cardsProgram from '../data/cardsProgram.json';
+import CardProgram from '../components/CardProgram.astro';
 ---
 
 <MainLayout title="Home Page">
-  <main class="p-6">
+  <main class="px-6 pt-44">
     <h1
-      class="font-montserrat font-bold text-5xl md:text-6xl lg:text-7xl text-amber-300 mb-8"
+      class="font-montserrat font-bold text-5xl md:text-6xl lg:text-7xl text-amber-300 mb-20"
     >
       Barcelona Tango Marathon
     </h1>
@@ -54,41 +56,43 @@ import cards from '../data/cards.json';
     }
   </script>
 
-  <h2 class="text-xl text-amber-300 mb-2 font-bold">
+  <h2 class="text-3xl text-amber-300 font-bold mb-7">
     SPINING YOUR TANGO DREAMS
   </h2>
-  <h3 class="mb-10">Scroll Right or Left to see all the DJs</h3>
+  <h3 class="text-xl">Scroll Right or Left to see all the DJs</h3>
 
-  <div class="relative max-w-6xl mx-auto">
-    <!-- Botón anterior -->
-    <button
-      id="prev"
-      class="absolute left-0 top-1/2 -translate-y-1/2 z-10 shadow rounded-full w-10 h-10 flex items-center justify-center"
-    >
-      ←
-    </button>
+  <section id="tangodj">
+    <div class="relative max-w-6xl mx-auto">
+      <!-- Botón anterior -->
+      <button
+        id="prev"
+        class="absolute left-0 top-1/2 -translate-y-1/2 z-10 shadow rounded-full w-10 h-10 flex items-center justify-center"
+      >
+        ←
+      </button>
 
-    <!-- Ventana del slider -->
-    <div class="overflow-hidden">
-      <div id="track" class="flex transition-transform duration-300 ease-out">
-        {
-          cards.map((card) => (
-            <div class="min-w-full sm:min-w-1/2 lg:min-w-1/3 p-4">
-              <Card {...card} />
-            </div>
-          ))
-        }
+      <!-- Ventana del slider -->
+      <div class="overflow-hidden">
+        <div id="track" class="flex transition-transform duration-300 ease-out">
+          {
+            cards.map((card) => (
+              <div class="min-w-full sm:min-w-1/2 lg:min-w-1/3 p-4">
+                <Card {...card} />
+              </div>
+            ))
+          }
+        </div>
       </div>
-    </div>
 
-    <!-- Botón siguiente -->
-    <button
-      id="next"
-      class="absolute right-0 top-1/2 -translate-y-1/2 z-10 shadow rounded-full w-10 h-10 flex items-center justify-center"
-    >
-      →
-    </button>
-  </div>
+      <!-- Botón siguiente -->
+      <button
+        id="next"
+        class="absolute right-0 top-1/2 -translate-y-1/2 z-10 shadow rounded-full w-10 h-10 flex items-center justify-center"
+      >
+        →
+      </button>
+    </div>
+  </section>
 
   <script>
     const track = document.getElementById('track') as HTMLElement;
@@ -118,4 +122,15 @@ import cards from '../data/cards.json';
       window.addEventListener('resize', update);
     }
   </script>
+  <h2 class="text-3xl text-amber-300 mb-5 font-bold">PROGRAMME</h2>
+
+  <section id="programme">
+    {
+      cardsProgram.map((cardProgram) => (
+        <div class="mb-7">
+          <CardProgram {...cardProgram} />
+        </div>
+      ))
+    }
+  </section>
 </MainLayout>
