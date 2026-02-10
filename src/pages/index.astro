@@ -1,24 +1,7 @@
 ---
 import Card from '../components/Card.astro';
 import MainLayout from '../layouts/MainLayout.astro';
-
-const cards = [
-  {
-    image: '/images/omellasimoneto.webp',
-    title: 'Card 1',
-    description: 'Esta es la primera card.',
-  },
-  {
-    image: '/images/lauralaru.webp',
-    title: 'Card 2',
-    description: 'Esta es la segunda card.',
-  },
-  {
-    image: '/images/olgalacachila.webp',
-    title: 'Card 3',
-    description: 'Esta es la segunda card.',
-  },
-];
+import cards from '../data/cards.json';
 ---
 
 <MainLayout title="Home Page">
