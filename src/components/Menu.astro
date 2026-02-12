@@ -27,7 +27,7 @@ const { class: className = '' } = Astro.props;
 
 <div
   id="float-menu"
-  class="text-amber-200 bg-black/70 backdrop-blur-sm flex flex-col p-5 text-3xl md:text-5xl fixed top-0 left-0 w-full items-center justify-center opacity-0 pointer-events-none scale-95 transition-all duration-300 space-y-6 h-screen z-50"
+  class="text-amber-200 bg-black flex flex-col p-5 text-3xl md:text-5xl fixed top-0 left-0 w-full items-center justify-center opacity-0 pointer-events-none scale-95 transition-all duration-300 space-y-6 h-screen z-50"
 >
   <a href="/">Home</a>
   <a href="#tangodj">Tango DJ</a>
@@ -49,6 +49,9 @@ const { class: className = '' } = Astro.props;
       let open = burger.classList.toggle('open');
       burger.setAttribute('aria-expanded', open);
       if (open) {
+        // Prevenir scroll del body
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
         floatMenuElement.classList.remove(
           'opacity-0',
           'pointer-events-none',
@@ -60,6 +63,8 @@ const { class: className = '' } = Astro.props;
           'scale-100',
         );
       } else {
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
         floatMenuElement.classList.remove(
           'opacity-100',
           'pointer-events-auto',
@@ -75,6 +80,8 @@ const { class: className = '' } = Astro.props;
 
     // Cerrar menú al hacer click en un enlace
     if (floatMenuElement.contains(e.target) && e.target.tagName === 'A') {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
       burger.classList.remove('open');
       burger.setAttribute('aria-expanded', false);
       floatMenuElement.classList.remove(
